@@ -2,6 +2,8 @@ const express= require("express");
 const cookieParser= require("cookie-parser");
 const app = express();
 
+require("dotenv").config();
+
 var cors = require("cors");
 app.use(express.json());
 const blogroutes = require("./Routes/blog");
@@ -12,8 +14,9 @@ app.use(
       origin: "*",
     })
   );
-app.listen(4000,()=>{
-    console.log("server started at 4000");
+app.listen(process.env.PORT || 4000,()=>{
+    console.log("server started");
+  
 })
 
 const dbconnect = require("./Config/database");
